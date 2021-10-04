@@ -18,18 +18,31 @@ def get_largest_prime_below(n):
 
 def test_get_largest_prime_below():
     assert(get_largest_prime_below(6))==5
-    assert (get_largest_prime_below(10)) == 9
+    assert (get_largest_prime_below(10)) == 7
 
 def get_age_in_days(birthday):
-    m=birthday[0:2]
-    p=birthday[4:6]
-    q=birthday[8:12]
-    zile_total=0
+    '''
+    Functia returneaza varsta unei persoane in zile
+    :param birthday: m(ziua), p(luna), q(anul), zile_total, montn[]
+    :return: returneaza in zile_total numarul total de zile
+    '''
+    m=int(birthday[0:2])
+    p=int(birthday[4:6])
+    q=int(birthday[8:12])
+    zile_total = 0
+    month=[31,28,31,30,31,30,31,31,30,31,30,31]
+    for i in range(0,p):
+        zile_total=zile_total-month[i]
+    zile_total=zile_total-m
+    zile_total=zile_total-q*365
+    zile_total=zile_total+4
+    zile_total=zile_total+2021*365
+    for i in range(0,10):
+        zile_total=zile_total+month[i]
     for i in range(q,2021):
         if i%4==0:
-            zile_total=zile_total+366
-        else:
-            zile_total=zile_total+365
+            zile_total=zile_total+1
+    return zile_total
 
 def main():
     while True:
@@ -47,7 +60,7 @@ def main():
                 maxnr=get_largest_prime_below(nr)
                 print(f"Ultimul numar prim mai mic decat {nr} este: {maxnr}")
         elif optiune=='2':
-            birthday=input("Introduceti data nasterii (YYYY/MM/DD): ")
+            birthday=input("Introduceti data nasterii (DD//MM//YYYY): ")
             print(get_age_in_days(birthday))
 
     test_get_largest_prime_below()
