@@ -60,7 +60,7 @@ def main():
                 maxnr=get_largest_prime_below(nr)
                 print(f"Ultimul numar prim mai mic decat {nr} este: {maxnr}")
         elif optiune=='2':
-            birthday=input("Introduceti data nasterii (DD/MM/YYYY): ")
+            birthday=input("Introduceti data nasterii (DD<MM/YYYY): ")
             print(get_age_in_days(birthday))
 
     test_get_largest_prime_below()
